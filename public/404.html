@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jakub Gilewicz</title>
+    <script>
+      // GitHub Pages serves this file for any unknown path (e.g. a direct
+      // load or refresh of /blog/some-post). It re-encodes the path into a
+      // query string and redirects to index.html, where the inline script
+      // in index.html decodes it and hands off to react-router.
+      // https://github.com/rafgraph/spa-github-pages
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          "/?/" +
+          l.pathname.slice(1).replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
