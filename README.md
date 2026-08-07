@@ -1,4 +1,4 @@
-# jgilewicz.github.io
+# Personal website
 
 Personal website — a minimal home page, project showcase, and blog, built
 with React, Vite, Tailwind CSS, and react-router. Static, no backend.
