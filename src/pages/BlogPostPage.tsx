@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getPostBySlug } from "../lib/posts";
 
 function BlogPostPage() {
@@ -23,7 +24,7 @@ function BlogPostPage() {
       </h1>
       <p className="mt-1 text-sm text-neutral-500">{post.date}</p>
       <div className="prose prose-invert prose-emerald mt-8 max-w-none">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>
     </article>
   );
