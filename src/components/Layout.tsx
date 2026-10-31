@@ -1,22 +1,42 @@
 import { NavLink, Outlet } from "react-router";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL } from "../data/profile";
 import { GithubIcon, LinkedinIcon, MailIcon } from "./icons";
 
-const EMAIL = "jakubgilewicz@wp.pl";
-const GITHUB_URL = "https://github.com/jgilewicz";
-const LINKEDIN_URL = "https://www.linkedin.com/in/jakub-gilewicz-9a4342284/";
-
 function navLinkClass({ isActive }: { isActive: boolean }) {
-  return `transition-colors hover:text-emerald-400 ${
-    isActive ? "text-emerald-400" : "text-neutral-400"
+  return `rounded-full px-3 py-1 transition-colors ${
+    isActive
+      ? "bg-neutral-800 text-neutral-50"
+      : "text-neutral-400 hover:text-neutral-100"
   }`;
 }
 
+const SOCIAL_LINKS = [
+  { href: GITHUB_URL, label: "GitHub", Icon: GithubIcon },
+  { href: LINKEDIN_URL, label: "LinkedIn", Icon: LinkedinIcon },
+  { href: `mailto:${EMAIL}`, label: "Email", Icon: MailIcon },
+];
+
 function Layout() {
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-200">
-      <header className="sticky top-0 z-10 border-b border-neutral-800 bg-neutral-950/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
-          <nav className="flex gap-5 font-mono text-sm">
+    <div className="relative min-h-screen overflow-x-hidden bg-neutral-950 font-sans text-neutral-200 antialiased">
+      <div
+        aria-hidden
+        className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-[36rem]"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[48rem] -translate-x-1/2 rounded-full bg-emerald-500/15 blur-3xl"
+      />
+
+      <header className="sticky top-0 z-10 border-b border-white/5 bg-neutral-950/70 backdrop-blur-md">
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3">
+          <NavLink
+            to="/"
+            className="font-mono text-sm font-medium text-neutral-100"
+          >
+            jg<span className="text-emerald-400">.</span>
+          </NavLink>
+          <nav className="flex items-center gap-1 rounded-full border border-white/5 bg-neutral-900/60 p-1 text-sm">
             <NavLink to="/" end className={navLinkClass}>
               Home
             </NavLink>
@@ -25,55 +45,33 @@ function Layout() {
             </NavLink>
           </nav>
           <nav className="flex gap-4 text-neutral-400">
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="transition-colors hover:text-emerald-400"
-            >
-              <GithubIcon />
-            </a>
-            <a
-              href={LINKEDIN_URL}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="transition-colors hover:text-emerald-400"
-            >
-              <LinkedinIcon />
-            </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              aria-label="Email"
-              className="transition-colors hover:text-emerald-400"
-            >
-              <MailIcon />
-            </a>
+            {SOCIAL_LINKS.map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("mailto:") ? undefined : "_blank"}
+                rel="noreferrer"
+                aria-label={label}
+                className="transition-colors hover:text-emerald-400"
+              >
+                <Icon />
+              </a>
+            ))}
           </nav>
         </div>
       </header>
 
-      <main className="mx-auto max-w-3xl px-6">
+      <main className="relative mx-auto max-w-4xl px-6">
         <Outlet />
       </main>
 
-      <footer className="border-t border-neutral-800">
-        <div className="mx-auto max-w-3xl px-6 py-8 text-sm text-neutral-500">
-          <a href={`mailto:${EMAIL}`} className="hover:text-emerald-400">
-            {EMAIL}
-          </a>
-          <span className="mx-2">·</span>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-emerald-400"
-          >
-            LinkedIn
-          </a>
-          <p className="mt-4 text-neutral-600">
-            © {new Date().getFullYear()} Jakub Gilewicz
+      <footer className="relative mt-16 border-t border-white/5">
+        <div className="mx-auto flex max-w-4xl flex-col gap-2 px-6 py-8 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Jakub Gilewicz</p>
+          <p className="font-mono">
+            <a href={`mailto:${EMAIL}`} className="hover:text-emerald-400">
+              {EMAIL}
+            </a>
           </p>
         </div>
       </footer>
