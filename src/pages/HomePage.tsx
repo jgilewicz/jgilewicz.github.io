@@ -16,7 +16,7 @@ const FOCUS_AREAS = [
   },
   {
     title: "Curricula for legged locomotion",
-    detail: "Unsupervised environment design for quadrupeds.",
+    detail: "Benchmarking unsupervised environment design on quadrupeds.",
   },
   {
     title: "Representation learning in RL",
@@ -37,6 +37,11 @@ const CARD =
 
 function isExternal(href: string) {
   return href.startsWith("http");
+}
+
+// first card spans the row; the last one too when it would sit alone
+function isWide(index: number, count: number) {
+  return index === 0 || (index === count - 1 && count % 2 === 0);
 }
 
 function SectionHeading({ index, title }: { index: string; title: string }) {
@@ -178,7 +183,7 @@ function Projects() {
         {projects.map((project, i) => (
           <article
             key={project.name}
-            className={`${CARD} flex flex-col p-5 ${i === 0 ? "sm:col-span-2" : ""}`}
+            className={`${CARD} flex flex-col p-5 ${isWide(i, projects.length) ? "sm:col-span-2" : ""}`}
           >
             <h3 className="font-mono text-sm text-neutral-100">
               {project.name}

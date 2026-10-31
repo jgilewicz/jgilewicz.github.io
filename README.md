@@ -31,7 +31,8 @@ npm run lint     # eslint
 1. Copy `src/content/posts/distil-act.md` to a new file in the same folder.
 2. Edit the frontmatter:
    - required: `title`, `date`, `slug`, `excerpt`
-   - optional: `project` (GitHub repo name, linked in the post header),
+   - optional: `project` (repo name under jgilewicz, or `owner/repo` for
+     repos elsewhere; linked in the post header),
      `venue` (badge for posts tied to a publication)
 3. Replace the Markdown body below the second `---` (GFM tables supported).
 4. Put images in `public/images/posts/<slug>/` as WebP

@@ -1,7 +1,6 @@
 import { Link, Navigate, useParams } from "react-router";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { GITHUB_URL } from "../data/profile";
 import { getPostBySlug } from "../lib/posts";
 
 const MARKDOWN_COMPONENTS: Components = {
@@ -40,9 +39,9 @@ function BlogPostPage() {
         <p className="mt-4 flex flex-wrap gap-x-3 font-mono text-xs text-neutral-500">
           <time dateTime={post.date}>{post.date}</time>
           <span>{post.readingMinutes} min read</span>
-          {post.project && (
+          {post.repoUrl && (
             <a
-              href={`${GITHUB_URL}/${post.project}`}
+              href={post.repoUrl}
               target="_blank"
               rel="noreferrer"
               className="text-emerald-400 hover:text-emerald-300"

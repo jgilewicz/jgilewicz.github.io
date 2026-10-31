@@ -1,15 +1,26 @@
+import { GITHUB_URL } from "../data/profile";
+
 export interface Post {
   title: string;
   date: string;
   slug: string;
   excerpt: string;
   project?: string;
+  repoUrl?: string;
   venue?: string;
   readingMinutes: number;
   content: string;
 }
 
 const WORDS_PER_MINUTE = 220;
+
+// `project` is a repo name under GITHUB_URL, or `owner/repo` for repos elsewhere
+function repoUrlFor(project: string | undefined): string | undefined {
+  if (!project) return undefined;
+  return project.includes("/")
+    ? `https://github.com/${project}`
+    : `${GITHUB_URL}/${project}`;
+}
 
 function parsePost(raw: string): Post {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
@@ -40,6 +51,7 @@ function parsePost(raw: string): Post {
     slug: frontmatter.slug,
     excerpt: frontmatter.excerpt,
     project: frontmatter.project,
+    repoUrl: repoUrlFor(frontmatter.project),
     venue: frontmatter.venue,
     readingMinutes: Math.max(
       1,
