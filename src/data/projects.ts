@@ -15,6 +15,7 @@ export const projects: Project[] = [
       "Spot and W01-TEK in MuJoCo MJX.",
     url: "https://github.com/Solvro/ml-wojtek-ued",
     tags: ["UED", "Legged locomotion", "MuJoCo MJX"],
+    postSlug: "ued-quadrupeds",
   },
   {
     name: "usc_erl",
