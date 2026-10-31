@@ -50,7 +50,7 @@ policy, per generation.
 
 ## The surrogate trick (SC-ERL)
 
-[SC-ERL](https://ieeexplore.ieee.org/document/9852668) (Wang et al., 2022)
+SC-ERL (Wang et al., 2022)
 noticed that the critic is already a fitness estimator in disguise. Take a
 batch of states from the replay buffer, ask the candidate policy what it
 would do, and average the critic's opinion:
