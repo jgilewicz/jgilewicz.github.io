@@ -8,6 +8,16 @@ export interface Publication {
 export const publications: Publication[] = [
   {
     title:
+      "Is It the Curriculum or Just the Easy Start? Benchmarking " +
+      "Unsupervised Environment Design on Quadrupeds",
+    venue: "arXiv preprint · 2026",
+    summary:
+      "Fourteen UED, domain-randomisation and robotics curricula on five " +
+      "quadrupeds in MuJoCo MJX, under one protocol.",
+    href: "https://arxiv.org/abs/2610.40364",
+  },
+  {
+    title:
       "Uncertainty-Aware Surrogate-Assisted Evolutionary Reinforcement " +
       "Learning in Expensive Low-Data Regimes",
     venue: "ECML PKDD 2026 · LFSD Workshop",

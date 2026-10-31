@@ -8,6 +8,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "ml-wojtek-ued",
+    description:
+      "Benchmark of unsupervised environment design for legged locomotion: " +
+      "PLR, ACCEL, SFL, PAIRED and terrain curricula on Go1, Go2, Barkour, " +
+      "Spot and W01-TEK in MuJoCo MJX.",
+    url: "https://github.com/Solvro/ml-wojtek-ued",
+    tags: ["UED", "Legged locomotion", "MuJoCo MJX"],
+  },
+  {
     name: "usc_erl",
     description:
       "Uncertainty-gated surrogate fitness for evolutionary RL: ensembles, " +

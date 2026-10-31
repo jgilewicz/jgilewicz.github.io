@@ -16,7 +16,7 @@ const FOCUS_AREAS = [
   },
   {
     title: "Curricula for legged locomotion",
-    detail: "Unsupervised environment design for quadrupeds.",
+    detail: "Benchmarking unsupervised environment design on quadrupeds.",
   },
   {
     title: "Representation learning in RL",
