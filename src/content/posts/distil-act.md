@@ -1,7 +1,7 @@
 ---
 title: Distilling ACT for Edge Deployment
 date: 2026-02-08
-slug: distill-act    
+slug: distill-act
 excerpt: Notes on distilling an ACT policy small enough to hit the control loop budget on an edge device.
 project: distill_act
 ---

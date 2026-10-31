@@ -4,8 +4,12 @@ export interface Post {
   slug: string;
   excerpt: string;
   project?: string;
+  venue?: string;
+  readingMinutes: number;
   content: string;
 }
+
+const WORDS_PER_MINUTE = 220;
 
 function parsePost(raw: string): Post {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
@@ -29,13 +33,19 @@ function parsePost(raw: string): Post {
       throw new Error(`post frontmatter is missing required field "${field}"`);
     }
   }
+  const body = content.trim();
   return {
     title: frontmatter.title,
     date: frontmatter.date,
     slug: frontmatter.slug,
     excerpt: frontmatter.excerpt,
     project: frontmatter.project,
-    content: content.trim(),
+    venue: frontmatter.venue,
+    readingMinutes: Math.max(
+      1,
+      Math.round(body.split(/\s+/).length / WORDS_PER_MINUTE),
+    ),
+    content: body,
   };
 }
 
